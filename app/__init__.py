@@ -1,9 +1,12 @@
 from flask import Flask
 from config import Config
+from app.database import db
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+
+    db.init_app(app)
 
     # Import blueprints
     from app.main import bp as main_bp
@@ -21,5 +24,8 @@ def create_app():
 
     register_error_handlers(app)
     setup_middleware(app)
+
+    with app.app_context():
+        db.create_all()
 
     return app
