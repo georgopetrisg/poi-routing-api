@@ -1,0 +1,1714 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-12-13T17:09:21Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/352365304",
+        "amenity": "cafe",
+        "building": "yes"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              19.9042492,
+              39.6270277
+            ],
+            [
+              19.9044105,
+              39.6270091
+            ],
+            [
+              19.9044206,
+              39.627061
+            ],
+            [
+              19.904308,
+              39.627074
+            ],
+            [
+              19.9042593,
+              39.6270796
+            ],
+            [
+              19.9042492,
+              39.6270277
+            ]
+          ]
+        ]
+      },
+      "id": "way/352365304"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/949376433",
+        "amenity": "cafe",
+        "building": "roof",
+        "cuisine": "coffee_shop",
+        "name": "Street Food Cafe"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              19.9152672,
+              39.6068968
+            ],
+            [
+              19.9152663,
+              39.6068578
+            ],
+            [
+              19.9152409,
+              39.6068571
+            ],
+            [
+              19.9152068,
+              39.6068207
+            ],
+            [
+              19.9152077,
+              39.6067555
+            ],
+            [
+              19.9152324,
+              39.606755
+            ],
+            [
+              19.9152315,
+              39.6066978
+            ],
+            [
+              19.9153169,
+              39.6066938
+            ],
+            [
+              19.9153264,
+              39.6068963
+            ],
+            [
+              19.9152672,
+              39.6068968
+            ]
+          ]
+        ]
+      },
+      "id": "way/949376433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/964655206",
+        "amenity": "cafe",
+        "building": "yes",
+        "check_date": "2025-05-14",
+        "cuisine": "coffee_shop;sandwich;tea;juice",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Lunatico",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              19.9154841,
+              39.6212838
+            ],
+            [
+              19.9154827,
+              39.6212062
+            ],
+            [
+              19.9157062,
+              39.6212037
+            ],
+            [
+              19.9157077,
+              39.6212813
+            ],
+            [
+              19.9154841,
+              39.6212838
+            ]
+          ]
+        ]
+      },
+      "id": "way/964655206"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1237883334",
+        "amenity": "cafe",
+        "building": "yes"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              19.8834358,
+              39.6301429
+            ],
+            [
+              19.883461,
+              39.6300535
+            ],
+            [
+              19.8835745,
+              39.6300668
+            ],
+            [
+              19.8835591,
+              39.6300933
+            ],
+            [
+              19.8835315,
+              39.6301266
+            ],
+            [
+              19.8835005,
+              39.6301475
+            ],
+            [
+              19.8834599,
+              39.6301493
+            ],
+            [
+              19.8834358,
+              39.6301429
+            ]
+          ]
+        ]
+      },
+      "id": "way/1237883334"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/534607973",
+        "amenity": "cafe",
+        "name": "Cafe Bar 92"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9238208,
+          39.6251555
+        ]
+      },
+      "id": "node/534607973"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/762520818",
+        "amenity": "cafe",
+        "name": "Ma Cocotte"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9175759,
+          39.5915116
+        ]
+      },
+      "id": "node/762520818"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1424312522",
+        "amenity": "cafe",
+        "name": "Cafe Royal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.91713,
+          39.5918318
+        ]
+      },
+      "id": "node/1424312522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1424312523",
+        "amenity": "cafe",
+        "name": "Kanoni",
+        "phone": "+30 693 680 5330",
+        "website": "http://www.cafekanoni.gr/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9173603,
+          39.5915545
+        ]
+      },
+      "id": "node/1424312523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1425859534",
+        "amenity": "cafe",
+        "name": "Art Cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9251749,
+          39.6256013
+        ]
+      },
+      "id": "node/1425859534"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1491155959",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9142948,
+          39.6078956
+        ]
+      },
+      "id": "node/1491155959"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3040693811",
+        "amenity": "cafe",
+        "name": "Coconela"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9185562,
+          39.6213225
+        ]
+      },
+      "id": "node/3040693811"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3040693812",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9188791,
+          39.6214075
+        ]
+      },
+      "id": "node/3040693812"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3040693813",
+        "amenity": "cafe",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Deseo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9188062,
+          39.6215534
+        ]
+      },
+      "id": "node/3040693813"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3097520754",
+        "amenity": "cafe",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Coffeeway",
+        "phone": "2661042162"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9198995,
+          39.622878
+        ]
+      },
+      "id": "node/3097520754"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4281790697",
+        "addr:housenumber": "8",
+        "addr:postcode": "49100",
+        "addr:street": "Καποδιστρίου",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "email": "info@cafetierra.gr",
+        "name": "Cafetierra",
+        "operator": "Micro Roasters Coffee Lab",
+        "phone": "+302661025904",
+        "website": "https://www.cafetierra.gr/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9236758,
+          39.6215708
+        ]
+      },
+      "id": "node/4281790697"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4357368558",
+        "amenity": "cafe",
+        "check_date": "2025-05-14",
+        "cuisine": "coffee_shop;sandwich",
+        "name": "Sette Venti",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9105869,
+          39.6259149
+        ]
+      },
+      "id": "node/4357368558"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4364641559",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9032742,
+          39.6262074
+        ]
+      },
+      "id": "node/4364641559"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4386859895",
+        "amenity": "cafe",
+        "name:en": "Red hot chilly burger"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9193822,
+          39.6241362
+        ]
+      },
+      "id": "node/4386859895"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4970808520",
+        "amenity": "cafe",
+        "name": "Averto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9200503,
+          39.6241022
+        ]
+      },
+      "id": "node/4970808520"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5044514122",
+        "amenity": "cafe",
+        "brand": "Starbucks",
+        "brand:wikidata": "Q37158",
+        "cuisine": "coffee_shop",
+        "name": "Starbucks",
+        "name:en": "Starbucks",
+        "name:ru": "Старбакс",
+        "official_name": "Starbucks Coffee",
+        "takeaway": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9233559,
+          39.6230333
+        ]
+      },
+      "id": "node/5044514122"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5044532323",
+        "addr:city": "Κέρκυρα",
+        "addr:housenumber": "42",
+        "addr:street": "Θεοτόκη Κοταρδου",
+        "amenity": "cafe",
+        "cuisine": "greek",
+        "internet_access": "wlan",
+        "name": "Μικρό café",
+        "name:el": "Μικρό café",
+        "name:en": "Mikro Cafe",
+        "opening_hours": "Mo-Sa 09:00-01:00, Su 09:00-00:00",
+        "outdoor_seating": "yes",
+        "phone": "26610 31009",
+        "website": "https://www.facebook.com/mikrocafecorfu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9212856,
+          39.624765
+        ]
+      },
+      "id": "node/5044532323"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5107126122",
+        "amenity": "cafe",
+        "internet_access": "wlan",
+        "name:en": "Sugar Cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9173007,
+          39.6209812
+        ]
+      },
+      "id": "node/5107126122"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5215244901",
+        "amenity": "cafe",
+        "cuisine": "pancakes",
+        "name": "Creperie \"Koukounara\""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9219036,
+          39.624708
+        ]
+      },
+      "id": "node/5215244901"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5890433785",
+        "amenity": "cafe",
+        "check_date": "2025-05-13",
+        "cuisine": "bakery;coffee_shop",
+        "internet_access": "no",
+        "level": "0",
+        "name": "Φούρνος Αυγερινού",
+        "name:el": "Φούρνος Αυγερινού",
+        "name:en": "Avgerinou Bakery",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9091201,
+          39.6248909
+        ]
+      },
+      "id": "node/5890433785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5892565186",
+        "amenity": "cafe",
+        "name:en": "Espresso Island",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9171224,
+          39.6219685
+        ]
+      },
+      "id": "node/5892565186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5908083886",
+        "amenity": "cafe",
+        "cuisine": "greek",
+        "name": "Gia-souvlaki"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9195042,
+          39.6244789
+        ]
+      },
+      "id": "node/5908083886"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5918111026",
+        "addr:city": "Κέρκυρα",
+        "addr:housenumber": "5",
+        "addr:postcode": "49100",
+        "addr:street": "Καποδιστρίου",
+        "amenity": "cafe",
+        "check_date": "2023-06-25",
+        "name": "Cafe Grec",
+        "outdoor_seating": "yes",
+        "toilets": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9234894,
+          39.6238505
+        ]
+      },
+      "id": "node/5918111026"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5964169730",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9181734,
+          39.6199255
+        ]
+      },
+      "id": "node/5964169730"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5964169732",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9201849,
+          39.6155253
+        ]
+      },
+      "id": "node/5964169732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5983125004",
+        "amenity": "cafe",
+        "indoor_seating": "yes",
+        "outdoor_seating": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9119494,
+          39.6160973
+        ]
+      },
+      "id": "node/5983125004"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6201884651",
+        "amenity": "cafe",
+        "check_date": "2025-05-14",
+        "cuisine": "ice_cream;cake;coffee_shop;tea;juice;dessert;pastry;bakery",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "level": "0",
+        "name": "Emeral",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9178092,
+          39.6222164
+        ]
+      },
+      "id": "node/6201884651"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6201884652",
+        "amenity": "cafe",
+        "brand": "Coffee Island",
+        "brand:wikidata": "Q60867333",
+        "brand:wikipedia": "en:Coffee Island",
+        "check_date": "2025-05-14",
+        "cuisine": "coffee_shop",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "level": "0",
+        "name": "Coffee Island",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9172609,
+          39.6221473
+        ]
+      },
+      "id": "node/6201884652"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207525393",
+        "amenity": "cafe",
+        "name": "Rialto Cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9173916,
+          39.6217516
+        ]
+      },
+      "id": "node/6207525393"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207525401",
+        "amenity": "cafe",
+        "check_date": "2025-05-14",
+        "cuisine": "sandwich;crepe;burger",
+        "level": "0",
+        "name": "Metro Crepe Station",
+        "name:en": "Metro Crepe Station",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9181186,
+          39.6213786
+        ]
+      },
+      "id": "node/6207525401"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207569297",
+        "amenity": "cafe",
+        "name": "5th Avenue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9172791,
+          39.6223853
+        ]
+      },
+      "id": "node/6207569297"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207569298",
+        "amenity": "cafe",
+        "name": "Momen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9173864,
+          39.6223482
+        ]
+      },
+      "id": "node/6207569298"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207722024",
+        "amenity": "cafe",
+        "name": "Del Capo",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9181275,
+          39.6221124
+        ]
+      },
+      "id": "node/6207722024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207722028",
+        "amenity": "cafe",
+        "name": "Big Apple",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9178619,
+          39.622195
+        ]
+      },
+      "id": "node/6207722028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207727446",
+        "amenity": "cafe",
+        "name": "Azienda Cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9188628,
+          39.6220339
+        ]
+      },
+      "id": "node/6207727446"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207736395",
+        "amenity": "cafe",
+        "cuisine": "burger;sandwich",
+        "internet_access": "wlan",
+        "name": "Miky Coffee",
+        "outdoor_seating": "yes",
+        "toilets:wheelchair": "no",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9186974,
+          39.6210857
+        ]
+      },
+      "id": "node/6207736395"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207738247",
+        "amenity": "cafe",
+        "name": "My Habit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9189786,
+          39.6211818
+        ]
+      },
+      "id": "node/6207738247"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178107",
+        "amenity": "cafe",
+        "check_date": "2023-06-25",
+        "name": "Libro d'Oro",
+        "name:en": "Libro d'Oro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9236263,
+          39.6238889
+        ]
+      },
+      "id": "node/6656178107"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178285",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9060829,
+          39.626876
+        ]
+      },
+      "id": "node/6656178285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178286",
+        "amenity": "cafe",
+        "name:en": "Cava Nekka"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9069163,
+          39.625804
+        ]
+      },
+      "id": "node/6656178286"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178298",
+        "amenity": "cafe",
+        "name:en": "Stathis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9150111,
+          39.6270964
+        ]
+      },
+      "id": "node/6656178298"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178299",
+        "amenity": "cafe",
+        "name:en": "Alegría"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9152646,
+          39.6270908
+        ]
+      },
+      "id": "node/6656178299"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178498",
+        "amenity": "cafe",
+        "name": "The Dream"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9196945,
+          39.6249881
+        ]
+      },
+      "id": "node/6656178498"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178517",
+        "amenity": "cafe",
+        "name:en": "Porto Bello"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9123394,
+          39.6258864
+        ]
+      },
+      "id": "node/6656178517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178518",
+        "amenity": "cafe",
+        "name:en": "Onan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.912177,
+          39.6258288
+        ]
+      },
+      "id": "node/6656178518"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178519",
+        "amenity": "cafe",
+        "indoor_seating": "yes",
+        "name:en": "Cofee Factory",
+        "outdoor_seating": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9119828,
+          39.625667
+        ]
+      },
+      "id": "node/6656178519"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178521",
+        "amenity": "cafe",
+        "check_date": "2025-05-14",
+        "cuisine": "coffee_shop;greek;sandwich;burger",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Άλσος Coffee & Food Bar",
+        "name:el": "Άλσος Coffee & Food Bar",
+        "name:en": "Alsos Coffee & Food Bar",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9117441,
+          39.6256145
+        ]
+      },
+      "id": "node/6656178521"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6656178525",
+        "amenity": "cafe",
+        "name:en": "Øa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9071694,
+          39.6257496
+        ]
+      },
+      "id": "node/6656178525"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6727444100",
+        "addr:city": "Kerkyra - CORFU TOWN",
+        "addr:housenumber": "14",
+        "addr:postcode": "491 31",
+        "addr:street": "ΚΟΡΙΝΘΙΩΝ",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "bar": "yes",
+        "cuisine": "coffee_shop",
+        "description": "No frills coffee shop. Locals and visitors. Mixed ages. Family friendly. Greek and international coffee.",
+        "internet_access": "yes",
+        "internet_access:fee": "yes",
+        "name": "Cafe ARKOUDA",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9213165,
+          39.6243036
+        ]
+      },
+      "id": "node/6727444100"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7842219285",
+        "amenity": "cafe",
+        "name:en": "Favela #17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9219455,
+          39.6268653
+        ]
+      },
+      "id": "node/7842219285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9058267017",
+        "amenity": "cafe",
+        "check_date": "2025-05-14",
+        "name": "Νέον Καφέ",
+        "name:el": "Νέον Καφέ",
+        "name:en": "Neon cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9148986,
+          39.623751
+        ]
+      },
+      "id": "node/9058267017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9669773017",
+        "amenity": "cafe",
+        "name:en": "Europe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9237448,
+          39.6242727
+        ]
+      },
+      "id": "node/9669773017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9669773117",
+        "amenity": "cafe",
+        "name:en": "Kohlias"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9238489,
+          39.6244705
+        ]
+      },
+      "id": "node/9669773117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9669773317",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9239978,
+          39.6249508
+        ]
+      },
+      "id": "node/9669773317"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9669773318",
+        "amenity": "cafe",
+        "name": "Λιστόν Καφέ",
+        "name:el": "Λιστόν Καφέ",
+        "name:en": "Liston Cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9236977,
+          39.6241187
+        ]
+      },
+      "id": "node/9669773318"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9669775218",
+        "amenity": "cafe",
+        "name": "Espresso Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9206642,
+          39.626413
+        ]
+      },
+      "id": "node/9669775218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9674321421",
+        "amenity": "cafe",
+        "check_date": "2025-10-25",
+        "level": "0",
+        "name": "Nadali"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.8801476,
+          39.6331553
+        ]
+      },
+      "id": "node/9674321421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9674443217",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9194289,
+          39.6242536
+        ]
+      },
+      "id": "node/9674443217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9674890520",
+        "amenity": "cafe",
+        "cuisine": "burger;coffee_shop;sandwich",
+        "name:en": "Vespa Coffee and More"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.89537,
+          39.6030124
+        ]
+      },
+      "id": "node/9674890520"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9679575017",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.8945829,
+          39.5905204
+        ]
+      },
+      "id": "node/9679575017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9679617117",
+        "amenity": "cafe",
+        "name:en": "Barista Coffee.café"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9028818,
+          39.6106083
+        ]
+      },
+      "id": "node/9679617117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9685225617",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.8941204,
+          39.606123
+        ]
+      },
+      "id": "node/9685225617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9685225717",
+        "amenity": "cafe",
+        "name": "Boiler",
+        "name:en": "Boiler"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9102273,
+          39.6153825
+        ]
+      },
+      "id": "node/9685225717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9805552838",
+        "amenity": "cafe",
+        "name": "Cozy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9190169,
+          39.6249918
+        ]
+      },
+      "id": "node/9805552838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9950714236",
+        "amenity": "cafe",
+        "brand": "Starbucks",
+        "brand:wikidata": "Q37158",
+        "cuisine": "coffee_shop",
+        "name": "Starbucks",
+        "official_name": "Starbucks Coffee",
+        "takeaway": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9149359,
+          39.6061576
+        ]
+      },
+      "id": "node/9950714236"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9956399523",
+        "amenity": "cafe",
+        "internet_access": "wlan",
+        "name": "Del Mar Coffee & More",
+        "outdoor_seating": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9038654,
+          39.6261607
+        ]
+      },
+      "id": "node/9956399523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9959121279",
+        "amenity": "cafe",
+        "internet_access": "wlan",
+        "name": "Εν στάσει"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9154484,
+          39.621743
+        ]
+      },
+      "id": "node/9959121279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9959598453",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9191726,
+          39.6125798
+        ]
+      },
+      "id": "node/9959598453"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9972514717",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop;fine_dining;ice_cream",
+        "name": "Καφέ Πέτρινο",
+        "name:de": "Petrino Café",
+        "name:el": "Καφέ Πέτρινο",
+        "name:en": "Petrino Café"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9219728,
+          39.6236138
+        ]
+      },
+      "id": "node/9972514717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10068597418",
+        "amenity": "cafe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9214999,
+          39.6236534
+        ]
+      },
+      "id": "node/10068597418"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10068597419",
+        "amenity": "cafe",
+        "name": "Gabao"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9217321,
+          39.6251577
+        ]
+      },
+      "id": "node/10068597419"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10539856363",
+        "amenity": "cafe",
+        "check_date": "2025-08-31",
+        "contact:facebook": "BizouVeganVegetarianCafe",
+        "diet:vegan": "yes",
+        "diet:vegetarian": "only",
+        "name": "Bizoú Café",
+        "opening_hours": "Feb 03 - Mar 01 off",
+        "phone": "+302661302104"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9217878,
+          39.6253936
+        ]
+      },
+      "id": "node/10539856363"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10540121587",
+        "addr:housenumber": "9",
+        "addr:street": "Γεωργίου Θεοτόκη",
+        "amenity": "cafe",
+        "diet:vegan": "yes",
+        "name": "Coffee Shop",
+        "phone": "+302661042162",
+        "source": "https://www.facebook.com/profile.php?id=100023081303491"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9198627,
+          39.6228484
+        ]
+      },
+      "id": "node/10540121587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10705324080",
+        "amenity": "cafe",
+        "brand": "Mikel",
+        "brand:wikidata": "Q16952021",
+        "cuisine": "coffee_shop",
+        "name": "Mikel",
+        "takeaway": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9209361,
+          39.6233681
+        ]
+      },
+      "id": "node/10705324080"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11010605573",
+        "amenity": "cafe",
+        "check_date": "2023-06-25",
+        "name": "Sway",
+        "outdoor_seating": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9233077,
+          39.6238372
+        ]
+      },
+      "id": "node/11010605573"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11242342865",
+        "addr:city": "Κέρκυρα",
+        "addr:housenumber": "100",
+        "addr:postcode": "49100",
+        "addr:street": "Κέρκυρας - Παλαιοκαστρίτσας",
+        "amenity": "cafe",
+        "brand": "Coffee Island",
+        "brand:wikidata": "Q60867333",
+        "cuisine": "coffee_shop",
+        "name": "Coffee Island",
+        "outdoor_seating": "yes",
+        "takeaway": "yes",
+        "website": "https://www.coffeeisland.gr/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.8961379,
+          39.623854
+        ]
+      },
+      "id": "node/11242342865"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11932483562",
+        "amenity": "cafe",
+        "name": "Vittori"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9234527,
+          39.6241632
+        ]
+      },
+      "id": "node/11932483562"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11932578961",
+        "amenity": "cafe",
+        "name": "Café-Bar \"Spilia\""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9194804,
+          39.6253683
+        ]
+      },
+      "id": "node/11932578961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12056890431",
+        "amenity": "cafe",
+        "name": "Zen Café"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9161799,
+          39.6227107
+        ]
+      },
+      "id": "node/12056890431"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12120339702",
+        "amenity": "cafe",
+        "cuisine": "coffee_shop",
+        "name": "Cafetierra Plakado",
+        "opening_hours": "Mo, We 08:00-18:00; Tu, Th-Fr 08:00-20:00; Sa-Su 08:00-16:00",
+        "website": "https://cafetierra.gr"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9227219,
+          39.6247481
+        ]
+      },
+      "id": "node/12120339702"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12837511124",
+        "amenity": "cafe",
+        "check_date": "2025-05-14",
+        "cuisine": "coffee_shop;tea;juice",
+        "highchair": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "level": "0",
+        "name": "Κλεψύδρα",
+        "name:el": "Κλεψύδρα",
+        "name:en": "Klepsidra",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "source": "survey",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:menstrual_products": "no",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.915035,
+          39.6238538
+        ]
+      },
+      "id": "node/12837511124"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13249531973",
+        "air_conditioning": "yes",
+        "amenity": "cafe",
+        "bar": "yes",
+        "check_date": "2025-10-22",
+        "cuisine": "coffee_shop",
+        "internet_access": "no",
+        "level": "0",
+        "name": "De novo",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "takeaway": "yes",
+        "toilets": "yes",
+        "toilets:menstrual_products": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9222305,
+          39.625443
+        ]
+      },
+      "id": "node/13249531973"
+    }
+  ]
+}
