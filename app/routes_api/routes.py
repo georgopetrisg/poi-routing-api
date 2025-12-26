@@ -1,7 +1,17 @@
 from app.routes_api import bp
 from flask import jsonify, request
+from app.models import Route
 
 ROUTES = []
+
+@bp.route("", methods=["GET"])
+def list_routes():
+    routes = Route.query.all()
+
+    return jsonify({
+        "count": len(routes),
+        "results": [route.to_dict() for route in routes]
+    })
 
 @bp.route("/compute", methods=["POST"])
 def compute_route():
@@ -16,13 +26,6 @@ def compute_route():
             "coordinates": [[23.41122, 35.49547], [23.41200, 35.49600]]
         },
         "poiSequence": data.get("locations", [])
-    })
-
-@bp.route("", methods=["GET"])
-def list_routes():
-    return jsonify({
-        "count": len(ROUTES),
-        "results": ROUTES
     })
 
 @bp.route("", methods=["POST"])
