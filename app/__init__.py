@@ -1,12 +1,36 @@
 from flask import Flask
 from config import Config
 from app.database import db
+from flasgger import Swagger
+import os
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+    app.json.sort_keys = False
 
     db.init_app(app)
+
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    yaml = os.path.join(basedir, '..', 'openapi.yml')
+
+    swagger_config = {
+        "openapi": "3.0.3",
+        "headers": [],
+        "specs": [
+            {
+                "endpoint": 'apispec',
+                "route": '/apispec.json',
+                "rule_filter": lambda rule: True,
+                "model_filter": lambda tag: True,
+            }
+        ],
+        "static_url_path": "/flasgger_static",
+        "swagger_ui": True,
+        "specs_route": "/apidocs/"
+    }
+
+    Swagger(app, template_file=yaml, config=swagger_config)
 
     # Import blueprints
     from app.main import bp as main_bp
