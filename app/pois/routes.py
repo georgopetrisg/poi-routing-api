@@ -1,7 +1,26 @@
+from sqlalchemy import *
 from app.pois import bp
 from flask import jsonify, request
 from app.models import Poi
 import json
+
+from math import radians, cos, sin, asin, sqrt
+
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance in kilometers between two points 
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+
+    # haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    r = 6371000 # Radius of earth in kilometers.
+    return c * r
 
 with open('data/pois_updated.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
@@ -19,10 +38,24 @@ def list_pois():
     
     query = Poi.query
 
+    if q:
+        search = f"%{q}%"
+        query = query.filter(or_(Poi.name.ilike(search), 
+                                 Poi.description.ilike(search),
+                                 Poi.category.ilike(search)))
+
     if category:
         query = query.filter(Poi.category == category)
 
     results = query.all()
+
+    if lat is not None and lon is not None and radius is not None:
+        nearby_results = []
+        for poi in results:
+            d = haversine(lon, lat, poi.lon, poi.lat)
+            if d <= radius:
+                nearby_results.append(poi)
+        results = nearby_results
 
     start = offset
     end = offset + limit
