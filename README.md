@@ -1,4 +1,4 @@
-# 🧭 POI Routing API
+# 🧭 POI & Routing API
 
 RESTful API for querying **Points of Interest (POIs)**, computing routes via **GraphHopper**, and persisting public/private user routes - implemented in **Python & Flask**.
 
