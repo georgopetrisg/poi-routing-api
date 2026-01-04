@@ -27,13 +27,17 @@ class Route(db.Model):
     id = db.Column(db.String(50), primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     public = db.Column(db.Boolean, default=False)
+    vehicle = db.Column(db.String(50), nullable=True)
     owner_id = db.Column(db.String(50), nullable=True)
-    
+
     # Saving complex data (json, dicts, lists) as text (JSON string)
-    _geometry = db.Column('geometry', db.Text, nullable=True)
     _poi_sequence = db.Column('poi_sequence', db.Text, nullable=True)
+    _geometry = db.Column('geometry', db.Text, nullable=True)
+
+    encoded_polyline = db.Column(db.Text, nullable=True)
     
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
     @property
     def geometry(self):
@@ -56,8 +60,11 @@ class Route(db.Model):
             "id": self.id,
             "name": self.name,
             "public": self.public,
-            "geometry": self.geometry,
-            "owner_id": self.owner_id,
+            "vehicle": self.vehicle,
+            "ownerId": self.owner_id,
             "poiSequence": self.poi_sequence,
-            "created_at": self.created_at.isoformat() if self.created_at else None
+            "geometry": self.geometry,
+            "encodedPolyline": self.encoded_polyline,
+            "createdAt": self.created_at.isoformat() if self.created_at else None,
+            "updatedAt": self.updated_at.isoformat() if self.updated_at else None
         }
