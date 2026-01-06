@@ -3,6 +3,12 @@ from flask import jsonify, request
 from app.models import Route
 from app.database import db
 import uuid
+import os
+from dotenv import load_dotenv
+import requests
+
+load_dotenv()
+GRAPHHOPPER_API_KEY = os.getenv("GRAPHHOPPER_API_KEY")
 
 @bp.route("", methods=["GET"])
 def list_routes():
@@ -99,16 +105,43 @@ def update_route(route_id):
 
 @bp.route("/compute", methods=["POST"])
 def compute_route():
-    # data = request.get_json()
-    # if not data or "locations" not in data:
-    #     return jsonify({"code": "invalid_request", "message": "Missing locations"}), 400
-    # return jsonify({
-    #     "distanceMeters": 13200.5,
-    #     "durationMillis": 950000,
-    #     "geometry": {
-    #         "type": "LineString",
-    #         "coordinates": [[23.41122, 35.49547], [23.41200, 35.49600]]
-    #     },
-    #     "poiSequence": data.get("locations", [])
-    # }), 200
-    pass
+    data = request.get_json() or {}
+    locations = data.get('locations', [])
+
+    if not locations or len(locations) < 2:
+        return jsonify({"code": "invalid_request", "message": "At least two locations are required to compute a route."}), 400
+    
+    vehicle = data.get('vehicle', 'car')
+
+    GRAPHHOPPER_URL = "https://graphhopper.com/api/1/route"
+
+    params = [
+        ('key', GRAPHHOPPER_API_KEY),
+        ('vehicle', vehicle),
+        ('type', 'json'),
+        ('points_encoded', 'false'),
+        ('instructions', 'false')
+    ]
+    
+    for loc in locations:
+        lat_lon = f"{loc[1]},{loc[0]}"
+        params.append(('point', lat_lon))
+
+    try:
+        response = requests.get(GRAPHHOPPER_URL, params=params)
+        GRAPHHOPPER_DATA = response.json()
+
+        if response.status_code != 200:
+            return jsonify({"code": "routing_error", "message": GRAPHHOPPER_DATA.get('message', 'Error from routing service')}), response.status_code
+        
+        route_info = GRAPHHOPPER_DATA['paths'][0]
+
+        result = {
+            "distance": route_info['distance'],
+            "time": route_info['time'],
+            "geometry": route_info['points'],
+        }
+
+        return jsonify(result), 200
+    except Exception as e:
+        return jsonify({"error": "Failed to connect to routing service", "details": str(e)}), 500
