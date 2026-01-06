@@ -69,6 +69,34 @@ def persist_route():
     
     return jsonify(new_route.to_dict()), 201
 
+@bp.route("/<string:route_id>", methods=["PUT", "PATCH"])
+def update_route(route_id):
+    route = Route.query.get_or_404(route_id)
+    data = request.get_json() or {}
+
+    if 'name' in data:
+        route.name = data['name']
+    if 'public' in data:
+        route.public = data['public']
+    if 'vehicle' in data:
+        route.vehicle = data['vehicle']
+    if 'ownerId' in data:
+        route.owner_id = data['ownerId']
+    if 'poiSequence' in data:
+        route.poi_sequence = data['poiSequence']
+    if 'geometry' in data:
+        route.geometry = data['geometry']
+    if 'encodedPolyline' in data:
+        route.encoded_polyline = data['encodedPolyline']
+
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"code": "database_error", "message": str(e)}), 500
+
+    return jsonify(route.to_dict()), 200
+
 @bp.route("/compute", methods=["POST"])
 def compute_route():
     # data = request.get_json()
