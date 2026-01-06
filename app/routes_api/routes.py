@@ -103,6 +103,19 @@ def update_route(route_id):
 
     return jsonify(route.to_dict()), 200
 
+@bp.route("/<string:route_id>", methods=["DELETE"])
+def delete_route(route_id):
+    route = Route.query.get_or_404(route_id)
+
+    try:
+        db.session.delete(route)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"code": "database_error", "message": str(e)}), 500
+
+    return jsonify({"message": f"Route {route_id} deleted successfully."}), 200
+
 @bp.route("/compute", methods=["POST"])
 def compute_route():
     data = request.get_json() or {}

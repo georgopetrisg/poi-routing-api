@@ -304,7 +304,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
+    delete:
+      summary: Delete a persisted route by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteDeleteResponse'
+        '404':
+          description: Route not found or not accessible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
 components:
   schemas:
     AboutResponse:
@@ -617,6 +638,14 @@ components:
         encodedPolyline:
           type: string
           nullable: true
+      
+    RouteDeleteResponse:
+      type: object
+      description: Response body when a route is successfully deleted.
+      properties:
+        message:
+          type: string
+          example: Route route_abc123 deleted successfully.
 
     Error:
       type: object
