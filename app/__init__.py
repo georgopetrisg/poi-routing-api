@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, app
 from config import Config
 from app.database import db
 from flasgger import Swagger
@@ -36,11 +36,13 @@ def create_app():
     from app.main import bp as main_bp
     from app.pois import bp as pois_bp
     from app.routes_api import bp as routes_bp
+    from app.auth import bp as auth_bp
 
     # Register them
     app.register_blueprint(main_bp, url_prefix="/")
     app.register_blueprint(pois_bp, url_prefix="/pois")
     app.register_blueprint(routes_bp, url_prefix="/routes")
+    app.register_blueprint(auth_bp, url_prefix="/auth")
 
     # Register error handlers and middleware
     from app.errors import register_error_handlers
