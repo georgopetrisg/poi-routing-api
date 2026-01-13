@@ -14,7 +14,7 @@ def setup_middleware(app):
     
     @app.before_request
     def rate_limit():
-        if request.endpoint and 'static' in request.endpoint:
+        if request.path != '/routes/compute':
             return
 
         user_id = request.headers.get('X-API-KEY') or request.remote_addr
