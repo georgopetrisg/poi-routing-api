@@ -1,6 +1,8 @@
 from app.database import db
 import datetime
 import json
+from werkzeug.security import generate_password_hash, check_password_hash
+import uuid
 
 class Poi(db.Model):
     __tablename__ = 'pois'
@@ -28,7 +30,7 @@ class Route(db.Model):
     name = db.Column(db.String(100), nullable=False)
     public = db.Column(db.Boolean, default=False)
     vehicle = db.Column(db.String(50), nullable=True)
-    owner_id = db.Column(db.String(50), nullable=True)
+    owner_id = db.Column(db.String(50), db.ForeignKey('users.id'), nullable=True)
 
     # Saving complex data (json, dicts, lists) as text (JSON string)
     _poi_sequence = db.Column('poi_sequence', db.Text, nullable=True)
@@ -68,3 +70,22 @@ class Route(db.Model):
             "createdAt": self.created_at.isoformat() if self.created_at else None,
             "updatedAt": self.updated_at.isoformat() if self.updated_at else None
         }
+    
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.String(50), primary_key=True)
+    username = db.Column(db.String(64), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
+    api_token = db.Column(db.String(100), unique=True) 
+
+    routes = db.relationship('Route', backref='owner', lazy='dynamic')
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    def generate_token(self):
+        self.api_token = str(uuid.uuid4())

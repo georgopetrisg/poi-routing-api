@@ -110,6 +110,8 @@ paths:
   /routes/compute:
     post:
       summary: Compute a route using GraphHopper
+      security:
+        - ApiKeyAuth: []
       description: >
         Computes a route between a sequence of POIs and/or raw coordinates using GraphHopper.
         This endpoint does not persist the route.
@@ -142,6 +144,8 @@ paths:
   /routes:
     post:
       summary: Persist a route
+      security:
+        - ApiKeyAuth: []
       description: >
         Stores a route with associated POIs and public/private visibility.
         The route geometry may come from /routes/compute or another source.
@@ -214,6 +218,9 @@ paths:
   /routes/{id}:
     get:
       summary: Get a persisted route by ID
+      security:
+        - ApiKeyAuth: []
+        - {}
       parameters:
         - in: path
           name: id
@@ -236,6 +243,8 @@ paths:
                 $ref: '#/components/schemas/Error'
     put:
       summary: Replace a persisted route
+      security:
+        - ApiKeyAuth: []
       description: >
         Full update of a route. All writable fields should be provided.
       parameters:
@@ -271,6 +280,8 @@ paths:
                 $ref: '#/components/schemas/Error'
     patch:
       summary: Partially update a persisted route
+      security:
+        - ApiKeyAuth: []
       description: >
         Partial update. Only fields present in the request body will be updated.
       parameters:
@@ -306,6 +317,8 @@ paths:
                 $ref: '#/components/schemas/Error'
     delete:
       summary: Delete a persisted route by ID
+      security:
+        - ApiKeyAuth: []
       parameters:
         - in: path
           name: id
@@ -325,8 +338,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Username already exists or missing data
+
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login to get API Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          description: Invalid credentials
                 
 components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
   schemas:
     AboutResponse:
       type: object
@@ -660,3 +719,30 @@ components:
           type: object
           additionalProperties: true
           nullable: true
+
+    AuthRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          example: marilena
+        password:
+          type: string
+          example: 123
+
+    AuthResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: User registered successfuly
+        username:
+          type: string
+          example: marilena
+        apiKey:
+          type: string
+          description: The token to use for subsequent requests
+          example: 550e8400-e29b-41d4-a716-446655440000
