@@ -1,13 +1,17 @@
 from flask import Flask, app
-from config import Config
+from config import config
 from app.database import db
 from flasgger import Swagger
 import os
 
-def create_app():
+def create_app(config_name=None):
     app = Flask(__name__)
-    app.config.from_object(Config)
     app.json.sort_keys = False
+
+    if config_name is None:
+        config_name = os.environ.get('FLASK_CONFIG') or 'default'
+
+    app.config.from_object(config[config_name])
 
     db.init_app(app)
 

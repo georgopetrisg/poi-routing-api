@@ -1,15 +1,10 @@
 from app.routes_api import bp
-from flask import jsonify, request, g
+from flask import jsonify, request, g, current_app
 from app.models import Route, User
 from app.database import db
 import uuid
-import os
-from dotenv import load_dotenv
 import requests
 from app.auth.decorator import require_api_key
-
-load_dotenv()
-GRAPHHOPPER_API_KEY = os.getenv("GRAPHHOPPER_API_KEY")
 
 @bp.route("", methods=["GET"])
 def list_routes():
@@ -137,6 +132,11 @@ def delete_route(route_id):
 def compute_route():
     data = request.get_json() or {}
     locations = data.get('locations', [])
+
+    GRAPHHOPPER_API_KEY = current_app.config.get("GRAPHHOPPER_API_KEY")
+
+    if not GRAPHHOPPER_API_KEY:
+        return jsonify({"code": "configuration_error", "message": "Routing service API key is not configured."}), 500
 
     if not locations or len(locations) < 2:
         return jsonify({"code": "invalid_request", "message": "At least two locations are required to compute a route."}), 400
