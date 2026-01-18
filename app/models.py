@@ -11,8 +11,24 @@ class Poi(db.Model):
     name = db.Column(db.String(100), nullable=True)
     category = db.Column(db.String(50), nullable=True)
     description = db.Column(db.Text, nullable=True)
-    lat = db.Column(db.Float, nullable=False)
-    lon = db.Column(db.Float, nullable=False)
+    _location = db.Column('location', db.Text, nullable=False)
+    _properties = db.Column('properties', db.Text, nullable=True)
+    
+    @property
+    def location(self):
+        return json.loads(self._location) if self._location else {}
+
+    @location.setter
+    def location(self, value):
+        self._location = json.dumps(value)
+
+    @property
+    def properties(self):
+        return json.loads(self._properties) if self._properties else {}
+    
+    @properties.setter
+    def properties(self, value):
+        self._properties = json.dumps(value)
 
     def to_dict(self):
         return {
@@ -20,7 +36,8 @@ class Poi(db.Model):
             "name": self.name,
             "category": self.category,
             "description": self.description,
-            "location": {"lat": self.lat, "lon": self.lon},
+            "location": self.location,
+            "properties": self.properties
         }
 
 class Route(db.Model):
@@ -34,7 +51,7 @@ class Route(db.Model):
 
     # Saving complex data (json, dicts, lists) as text (JSON string)
     _poi_sequence = db.Column('poi_sequence', db.Text, nullable=True)
-    _geometry = db.Column('geometry', db.Text, nullable=True)
+    _geometry = db.Column('geometry', db.Text, nullable=False)
 
     encoded_polyline = db.Column(db.Text, nullable=True)
     

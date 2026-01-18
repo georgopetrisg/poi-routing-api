@@ -7,7 +7,7 @@ info:
     and persisting public/private user routes.
 
 servers:
-  - url: http://localhost:5000
+  - url: http://127.0.0.1:5000
 
 paths:
   /about:
@@ -82,6 +82,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              
 
   /pois/{id}:
     get:
@@ -136,6 +137,12 @@ paths:
                 $ref: '#/components/schemas/Error'
         '502':
           description: GraphHopper error or timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Too Many Requests (Rate Limit Exceeded)
           content:
             application/json:
               schema:
@@ -338,6 +345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+
   /auth/register:
     post:
       tags:
@@ -348,16 +356,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AuthRequest'
+              $ref: '#/components/schemas/AuthRequestRegister'
       responses:
         '201':
           description: User registered successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthResponse'
+                $ref: '#/components/schemas/AuthResponseRegister'
         '400':
           description: Username already exists or missing data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
   /auth/login:
     post:
@@ -369,16 +381,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AuthRequest'
+              $ref: '#/components/schemas/AuthRequestLogin'
       responses:
         '200':
           description: Login successful
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthResponse'
+                $ref: '#/components/schemas/AuthResponseLogin'
         '401':
           description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
                 
 components:
   securitySchemes:
@@ -517,6 +533,9 @@ components:
       properties:
         locations:
           type: array
+          example:
+            - [19.9152672, 39.6068968]
+            - [19.9154841, 39.6212838]
           minItems: 2
           description: >
             Ordered list of locations. Each can be a POI reference or raw coordinates.
@@ -720,7 +739,7 @@ components:
           additionalProperties: true
           nullable: true
 
-    AuthRequest:
+    AuthRequestRegister:
       type: object
       required:
         - username
@@ -731,9 +750,22 @@ components:
           example: marilena
         password:
           type: string
-          example: 123
+          example: "123"
+    
+    AuthRequestLogin:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          example: geo
+        password:
+          type: string
+          example: "123"
 
-    AuthResponse:
+    AuthResponseRegister:
       type: object
       properties:
         message:
@@ -742,6 +774,20 @@ components:
         username:
           type: string
           example: marilena
+        apiKey:
+          type: string
+          description: The token to use for subsequent requests
+          example: 550e8400-e29b-41d4-a716-446655440000
+    
+    AuthResponseLogin:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Login successful
+        username:
+          type: string
+          example: geo
         apiKey:
           type: string
           description: The token to use for subsequent requests

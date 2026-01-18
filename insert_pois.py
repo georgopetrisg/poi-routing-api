@@ -5,6 +5,22 @@ from app.models import Poi
 
 app = create_app()
 
+def find_key(data, key):
+    if not isinstance(data, dict):
+        return None
+    
+    for key_, value in data.items():
+        if key in key_:
+            return value
+    
+    for k, value in data.items():
+        if isinstance(value, dict):
+            found_value = find_key(value, key)
+            if found_value is not None:
+                return found_value
+            
+    return None
+
 def import_data():
     with app.app_context():
         db.create_all()
@@ -28,7 +44,7 @@ def import_data():
         for item in items:
             properties = item.get('properties', {})
             geometry = item.get('geometry', {})
-            name = properties.get('name')
+            name = find_key(item, 'name')
 
             if not name:
                 print(f"Skipping ID {item.get('id')} - No name found")
@@ -41,7 +57,6 @@ def import_data():
             if geometry.get('type') == 'Point':
                 lon = coords[0]
                 lat = coords[1]
-            
             elif geometry.get('type') == 'Polygon':
                 # Use the first coordinate
                 first_point = coords[0][0]
@@ -55,9 +70,9 @@ def import_data():
                     id=poi_id,
                     name=name,
                     category=properties.get('amenity', 'cafe'),
-                    lat=lat,
-                    lon=lon,
-                    description=properties.get('building')
+                    description=properties.get('cuisine'),
+                    location={"lat": lat, "lon": lon},
+                    properties=properties
                 )
 
                 db.session.merge(new_poi)

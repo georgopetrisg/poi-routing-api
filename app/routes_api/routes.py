@@ -5,6 +5,8 @@ from app.database import db
 import uuid
 import requests
 from app.auth.decorator import require_api_key
+from app.errors import APIError
+from app.validators import validate_route_compute, validate_route_data, validate_route_put_patch
 
 @bp.route("", methods=["GET"])
 def list_routes():
@@ -33,9 +35,15 @@ def list_routes():
     }), 200
 
 @bp.route("/<string:route_id>", methods=["GET"])
-
 def get_route(route_id):
-    route = Route.query.get_or_404(route_id)
+    route = Route.query.get(route_id)
+
+    if not route:
+        raise APIError(
+            message="Route not found", 
+            status_code=404,
+            details={f"{route_id}": "Not found"}
+        )
     
     token = request.headers.get('X-API-KEY')
     user = None
@@ -48,24 +56,39 @@ def get_route(route_id):
     if route.public or is_owner:
         return jsonify(route.to_dict()), 200
     else:
-        return jsonify({"error": "Forbidden: This route is private"}), 403
+        raise APIError(
+            message="This route is private", 
+            status_code=403,
+            details={f"{route_id}": "Private"}
+        )
 
 @bp.route("", methods=["POST"])
 @require_api_key
 def persist_route():
-    data = request.get_json() or {}
+    data = request.get_json(silent=True)
+    if data is None:
+        raise APIError(
+            message="Invalid or missing JSON body.",
+            status_code=400,
+            details={"body": "Invalid JSON format"}
+        )
 
-    if 'name' not in data:
-        return jsonify({"code": "invalid_request", "message": "Missing route name"}), 400
-
+    errors = validate_route_data(data)
+    if errors:
+        raise APIError(
+            message="Invalid route data.",
+            status_code=400,
+            details=errors
+        )
+    
     new_id = f"route_{uuid.uuid4()}"
 
     new_route = Route(
         id=new_id,
         name=data.get('name'),
         public=data.get('public', False),
-        vehicle=data.get('vehicle'),
-        owner_id=data.get('ownerId'),
+        vehicle=data.get('vehicle', 'car'),
+        owner_id=data.get('ownerId', g.current_user.id),
         encoded_polyline=data.get('encodedPolyline')
     )
 
@@ -80,15 +103,49 @@ def persist_route():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        return jsonify({"code": "database_error", "message": str(e)}), 500
+        raise APIError(
+            message=str(e), 
+            status_code=500
+        )
     
-    return jsonify(new_route.to_dict()), 201
+    return jsonify(
+        message="Route created successfully.",
+        route=new_route.to_dict()
+    ), 201
 
 @bp.route("/<string:route_id>", methods=["PUT", "PATCH"])
 @require_api_key
 def update_route(route_id):
-    route = Route.query.get_or_404(route_id)
-    data = request.get_json() or {}
+    route = Route.query.get(route_id)
+    if route is None:
+        raise APIError(
+            message="Route not found", 
+            status_code=404,
+            details={f"{route_id}": "Not found"}
+        )
+    
+    if route.owner_id != g.current_user.id:
+        raise APIError(
+            message="You do not have permission to modify this route.", 
+            status_code=403,
+            details={f"{route_id}": "Forbidden"}
+        )
+
+    data = request.get_json(silent=True)
+    if data is None:
+        raise APIError(
+            message="Invalid or missing JSON body.",
+            status_code=400,
+            details={"body": "Invalid JSON format"}
+        )
+    
+    errors = validate_route_put_patch(data)
+    if errors:
+        raise APIError(
+            message="Invalid route data.",
+            status_code=400,
+            details=errors
+        )
 
     if 'name' in data:
         route.name = data['name']
@@ -109,38 +166,75 @@ def update_route(route_id):
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        return jsonify({"code": "database_error", "message": str(e)}), 500
+        raise APIError(
+            message=str(e), 
+            status_code=500
+        )
 
-    return jsonify(route.to_dict()), 200
+    return jsonify(
+        message="Route updated successfully.",
+        route=route.to_dict()
+        ), 200
 
 @bp.route("/<string:route_id>", methods=["DELETE"])
 @require_api_key
 def delete_route(route_id):
-    route = Route.query.get_or_404(route_id)
+    route = Route.query.get(route_id)
+    if route is None:
+        raise APIError(
+            message="Route not found", 
+            status_code=404,
+            details={f"{route_id}": "Not found"}
+        )
 
     try:
         db.session.delete(route)
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        return jsonify({"code": "database_error", "message": str(e)}), 500
+        raise APIError(
+            message=str(e), 
+            status_code=500
+        )
 
     return jsonify({"message": f"Route {route_id} deleted successfully."}), 200
 
 @bp.route("/compute", methods=["POST"])
 @require_api_key
 def compute_route():
-    data = request.get_json() or {}
+    data = request.get_json(silent=True)
+    if data is None:
+        raise APIError(
+            message="Invalid or missing JSON body.",
+            status_code=400,
+            details={"body": "Invalid JSON format"}
+        )
+    
+    compute_errors = validate_route_compute(data)
+    if compute_errors:
+        raise APIError(
+            message="Invalid route compute data.",
+            status_code=400,
+            details=compute_errors
+        )
+
     locations = data.get('locations', [])
 
     GRAPHHOPPER_API_KEY = current_app.config.get("GRAPHHOPPER_API_KEY")
 
     if not GRAPHHOPPER_API_KEY:
-        return jsonify({"code": "configuration_error", "message": "Routing service API key is not configured."}), 500
+        raise APIError(
+            message="Routing service API key is not configured.", 
+            status_code=500
+        )
 
     if not locations or len(locations) < 2:
-        return jsonify({"code": "invalid_request", "message": "At least two locations are required to compute a route."}), 400
-    
+        raise APIError(
+            message="At least two locations are required to compute a route.", 
+            status_code=400,
+            details={"locations": "At least two required"}
+        )
+
     vehicle = data.get('vehicle', 'car')
 
     GRAPHHOPPER_URL = "https://graphhopper.com/api/1/route"
@@ -162,7 +256,10 @@ def compute_route():
         GRAPHHOPPER_DATA = response.json()
 
         if response.status_code != 200:
-            return jsonify({"code": "routing_error", "message": GRAPHHOPPER_DATA.get('message', 'Error from routing service')}), response.status_code
+            raise APIError(
+                message=GRAPHHOPPER_DATA.get('message', 'Error from routing service'), 
+                status_code=response.status_code
+            )
         
         route_info = GRAPHHOPPER_DATA['paths'][0]
 
@@ -174,4 +271,7 @@ def compute_route():
 
         return jsonify(result), 200
     except Exception as e:
-        return jsonify({"error": "Failed to connect to routing service", "details": str(e)}), 500
+        raise APIError(
+            message=str(e), 
+            status_code=500
+        )

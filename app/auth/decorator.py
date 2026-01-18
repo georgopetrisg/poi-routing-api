@@ -1,6 +1,7 @@
 from functools import wraps
 from flask import request, jsonify, g
 from app.models import User
+from app.errors import APIError
 
 def require_api_key(f):
     @wraps(f)
@@ -8,12 +9,18 @@ def require_api_key(f):
         token = request.headers.get('X-API-KEY')
 
         if not token:
-            return jsonify({"error": "Missing API Key"}), 401
+            raise APIError(
+                message="API key is required.",
+                status_code=401,
+                details={"api_key": "Missing"})
 
         user = User.query.filter_by(api_token=token).first()
 
         if not user:
-            return jsonify({"error": "Invalid API Key"}), 401
+           raise APIError(
+               message="API key is invalid.", 
+               status_code=403,
+               details={"api_key": "Invalid"})
 
         g.current_user = user
 
