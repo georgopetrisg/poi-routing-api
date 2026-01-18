@@ -7,30 +7,109 @@ import requests
 from app.auth.decorator import require_api_key
 from app.errors import APIError
 from app.validators import validate_route_compute, validate_route_data, validate_route_put_patch
+from sqlalchemy import *
 
 @bp.route("", methods=["GET"])
 def list_routes():
-    public = request.args.get('public', type=lambda v: v.lower() == 'true' )
-    owner_id = request.args.get('ownerId')
+    params_errors = {}
 
-    limit = request.args.get('limit', default=50, type=int)
-    offset = request.args.get('offset', default=0, type=int)
+    raw_public = request.args.get('public')
+    ownerId = request.args.get('ownerId')
+    raw_limit = request.args.get('limit', default=50)
+    raw_offset = request.args.get('offset', default=0)
+
+    try:
+        limit = int(raw_limit)
+        if limit < 1 or limit > 1000:
+            params_errors['limit'] = "Must be between 1 and 1000"
+    except ValueError:
+        params_errors['limit'] = "Must be an integer"
+
+    try:
+        offset = int(raw_offset)
+        if offset < 0:
+            params_errors['offset'] = "Must be a possitive integer"
+    except ValueError:
+        params_errors['offset'] = "Must be an integer"
+    
+    public = None
+    if raw_public:
+        val = raw_public.lower()
+
+        if val in ['true', '1', 'yes', 'on', 'public', 'y']:
+            public = True
+        elif val in ['false', '0', 'no', 'off', 'private', 'n']:
+            public = False
+        else:
+            params_errors['public'] = "Must be a boolean value"
+
+    if params_errors:
+        raise APIError(
+            message="Invalid query parameters.",
+            status_code=400,
+            details=params_errors
+        )
 
     query = Route.query
 
-    if public:
-        query = query.filter(Route.public == True)
-
-    if owner_id:
-        query = query.filter(Route.owner_id == owner_id)
+    token = request.headers.get('X-API-KEY')
+    user = None
     
-    total = query.count()
+    if token:
+        user = User.query.filter_by(api_token=token).first()
+
+    if ownerId:
+        query = query.filter_by(owner_id=ownerId)
+        is_owner = (user and user.id == ownerId)
+
+        if public is True:
+            query = query.filter_by(public=True)
+        elif public is False:
+            if is_owner:
+                query = query.filter_by(public=False)
+            else:
+                raise APIError(
+                    message="This owner's routes are private", 
+                    status_code=403,
+                    details={f"{ownerId}": "Routes are private"}
+                )
+        else:
+            if is_owner:
+                query = query.filter(
+                    or_(
+                        Route.public == True,
+                        Route.owner_id == ownerId
+                    )
+                )
+            else:
+                query = query.filter_by(public=True)
+    else:
+        if public is True:
+            query = query.filter_by(public=True)
+        elif public is False:
+            if user:
+                query = query.filter_by(public=False, owner_id=user.id)
+            else:
+                raise APIError(
+                    message="You must be the owner to view private routes", 
+                    status_code=403,
+                    details={"routes": "Private"}
+                )
+        else:
+            if user:
+                query = query.filter(
+                    or_(
+                        Route.public == True,
+                        Route.owner_id == user.id
+                    )
+                )
+            else:
+                query = query.filter_by(public=True)
 
     routes = query.limit(limit).offset(offset).all()
 
     return jsonify({
         "count": len(routes),
-        "total": total,
         "results": [r.to_dict() for r in routes]
     }), 200
 
@@ -221,18 +300,10 @@ def compute_route():
     locations = data.get('locations', [])
 
     GRAPHHOPPER_API_KEY = current_app.config.get("GRAPHHOPPER_API_KEY")
-
     if not GRAPHHOPPER_API_KEY:
         raise APIError(
             message="Routing service API key is not configured.", 
             status_code=500
-        )
-
-    if not locations or len(locations) < 2:
-        raise APIError(
-            message="At least two locations are required to compute a route.", 
-            status_code=400,
-            details={"locations": "At least two required"}
         )
 
     vehicle = data.get('vehicle', 'car')

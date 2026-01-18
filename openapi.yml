@@ -177,6 +177,9 @@ paths:
                 $ref: '#/components/schemas/Error'
     get:
       summary: List persisted routes
+      security:
+        - ApiKeyAuth: []
+        - {}
       description: >
         Returns public or private routes. Private routes are typically filtered by the
         authenticated user (ownerId is usually derived from auth context).
@@ -221,6 +224,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+        '403':
+          description: Private routes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
   /routes/{id}:
     get:
@@ -244,6 +253,12 @@ paths:
                 $ref: '#/components/schemas/Route'
         '404':
           description: Route not found or not accessible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Private route
           content:
             application/json:
               schema:
@@ -285,6 +300,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+        '403':
+          description: Private route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     patch:
       summary: Partially update a persisted route
       security:
@@ -318,6 +339,12 @@ paths:
                 $ref: '#/components/schemas/Error'
         '404':
           description: Route not found or not accessible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Private route
           content:
             application/json:
               schema:
