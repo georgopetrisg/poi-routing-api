@@ -88,7 +88,8 @@ def login():
             
         return jsonify({
             "message": "Login successful",
-            "apiKey": user.api_token
+            "apiKey": user.api_token,
+            "id": user.id
         }), 200
 
     raise APIError(

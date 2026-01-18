@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - POI & Routing API</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+    <div id="sidebar">
+        <div class="section">
+            <h3>User</h3>
+            <p>Welcome, <span id="userDisplay">Guest</span></p>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="section">
+            <h3>Route Actions</h3>
+            
+            <label for="vehicleType">Vehicle:</label>
+            <select id="vehicleType" style="width: 100%; margin-bottom: 10px; padding: 5px;">
+                <option value="car">Car</option>
+                <option value="bike">Bike</option>
+                <option value="foot">Walk</option>
+            </select>
+
+            <p id="statusMsg" style="font-size: 0.9em; color: #666;">Select Start Point...</p>
+            
+            <button id="calcRouteBtn" disabled>Calculate Route</button>
+            <button id="clearRouteBtn">Clear Map</button>
+            <br>
+            <button id="saveRouteBtn" disabled>Save Route</button>
+        </div>
+
+        <div class="section">
+            <h3>Saved Routes</h3>
+            <div id="savedRoutesList">Loading...</div>
+        </div>
+    </div>
+    
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+</html>
