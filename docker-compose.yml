@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    container_name: flask_api_server
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - FLASK_DEBUG=1 

@@ -1,0 +1,94 @@
+# =========================================
+# Python / Flask
+# =========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
+# Flask instance / local config
+instance/
+.env
+*.env
+config_local.py
+
+# =========================================
+# Virtual environment
+# =========================================
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =========================================
+# SQLite database files
+# =========================================
+*.db
+*.sqlite3
+
+# =========================================
+# IDE / Editor
+# =========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# =========================================
+# Docker
+# =========================================
+# Ignore build artifacts & cache
+*.pid
+*.tar
+*.log
+docker-compose.override.yml
+# Named volumes and temporary files
+**/.docker/
+**/tmp/
+**/logs/
+**/build/
+
+# =========================================
+# macOS / Linux / Windows system files
+# =========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================================
+# Swagger / OpenAPI cache
+# =========================================
+*.bak.yml
+*.bak.json
+
+# =========================================
+# Jupyter / Notebook (just in case)
+# =========================================
+.ipynb_checkpoints/
+*.ipynb
+
+# =========================================
+# Optional: compiled static files
+# =========================================
+app/static/__pycache__/
+app/static/build/
+
+# =========================================
+# Docker ignore
+# =========================================
+venv/
+__pycache__/
+*.pyc
+.git/
+.env
+logs/
+instance/
+.pytest_cache/
