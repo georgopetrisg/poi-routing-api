@@ -1,7 +1,12 @@
 from collections import defaultdict
 from datetime import datetime, timedelta
-from flask import request, jsonify
+from flask import request, g
 from app.errors import APIError
+import time
+import uuid
+import logging
+
+logger = logging.getLogger(__name__)
 
 request_history = defaultdict(list)
 
@@ -14,7 +19,59 @@ BAN_DURATION = 180
 def setup_middleware(app):
     
     @app.before_request
-    def rate_limit():
+    def before_request():
+        req_id = request.headers.get('X-Request-ID', str(uuid.uuid4()))
+        g.request_id = req_id
+        g.start_time = time.time()
+
+        token = request.headers.get('X-API-KEY')
+        g.user = None
+
+        if token:
+            from app.models import User
+            user = User.query.filter_by(api_token=token).first()
+            if user:
+                g.user = user
+
+        if request.path == '/routes/compute':
+            rate_limit()
+    
+    @app.after_request
+    def after_request(response):
+        if hasattr(g, 'start_time'):
+            elapsed = time.time() - g.start_time
+            elapsed_ms = int(elapsed * 1000)
+        else:
+            elapsed_ms = 0
+        
+        response.headers['X-Request-ID'] = g.request_id
+        full_path = request.full_path.rstrip('?')
+
+        if request.headers.get('X-Forwarded-For'):
+            ip = request.headers.get('X-Forwarded-For').split(',')[0].strip()
+        else:
+            ip = request.remote_addr or 'unknown'
+
+        user_info = "Guest"
+        if hasattr(g, 'user') and g.user:
+            user_info = f"User: {g.user.id}"
+        
+        timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+
+        log_message = (
+            f"[{timestamp}] "
+            f"[{g.request_id}] "
+            f"[{ip}] "
+            f"[{user_info}] "
+            f"[{request.method} {full_path}] -> "
+            f"[{response.status_code} ({elapsed_ms}ms)]"
+        )
+        
+        logger.info(log_message)
+
+        return response
+
+def rate_limit():
         if request.path != '/routes/compute':
             return
 

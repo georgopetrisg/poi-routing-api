@@ -13,6 +13,9 @@ paths:
   /about:
     get:
       summary: About the API development group
+      security:
+        - ApiKeyAuth: []
+        - {}
       description: Returns the list of development team members and their IDs.
       responses:
         '200':
@@ -24,6 +27,9 @@ paths:
   /pois:
     get:
       summary: List / search POIs
+      security:
+        - ApiKeyAuth: []
+        - {}
       description: Query the open dataset of POIs by text, category, or proximity.
       parameters:
         - in: query
@@ -87,6 +93,9 @@ paths:
   /pois/{id}:
     get:
       summary: Get POI by ID
+      security:
+        - ApiKeyAuth: []
+        - {}
       parameters:
         - in: path
           name: id
