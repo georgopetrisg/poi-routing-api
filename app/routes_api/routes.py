@@ -265,6 +265,13 @@ def delete_route(route_id):
             status_code=404,
             details={f"{route_id}": "Not found"}
         )
+    
+    if route.owner_id != g.user.id:
+        raise APIError(
+            message="Forbidden: You are not allowed to delete this route.",
+            status_code=403,
+            details={"error": "You do not own this route"}
+        )
 
     try:
         db.session.delete(route)
