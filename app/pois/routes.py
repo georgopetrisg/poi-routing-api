@@ -32,7 +32,7 @@ def list_pois():
     raw_lat = request.args.get('lat')
     raw_lon = request.args.get('lon')
     raw_radius = request.args.get('radius')
-    raw_limit = request.args.get('limit', default=50)
+    raw_limit = request.args.get('limit', default=100)
     raw_offset = request.args.get('offset', default=0)
 
     try:

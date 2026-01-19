@@ -94,7 +94,9 @@ class User(db.Model):
     id = db.Column(db.String(50), primary_key=True)
     username = db.Column(db.String(64), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
-    api_token = db.Column(db.String(100), unique=True) 
+    api_token = db.Column(db.String(100), unique=True)
+    requests_limit = db.Column(db.Integer, default=6, nullable=False)
+    window_seconds = db.Column(db.Integer, default=60, nullable=False)
 
     routes = db.relationship('Route', backref='owner', lazy='dynamic')
 
