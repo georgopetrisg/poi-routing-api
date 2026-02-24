@@ -50,7 +50,7 @@ The easiest way to run the application is using **Docker** and **Docker Compose*
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/georgopetrisg/task-management-api.git
+git clone https://github.com/georgopetrisg/poi-routing-api.git
 ```
 
 ### 2️⃣ Build and Run the Container
